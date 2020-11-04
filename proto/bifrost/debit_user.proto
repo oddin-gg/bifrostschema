@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package bifrost;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+message DebitUserRequest {
+  string token = 1;
+  string currency = 2;
+  float amount = 3;
+  string description = 4;
+  string transactionId = 5;
+  string betId = 6;
+}
+
+message DebitUserResponse {
+  string operatorTransactionId = 1;
+  google.protobuf.StringValue errorMessage = 2;
+  google.protobuf.Int32Value errorCode = 3;
+}
+

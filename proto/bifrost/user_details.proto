@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package bifrost;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+message UserDetailsRequest {
+  string token = 1;
+}
+
+message UserDetailsResponse {
+  string userId = 1;
+  string currency = 2;
+  string language = 3;
+  google.protobuf.StringValue errorMessage = 4;
+  google.protobuf.Int32Value errorCode = 5;
+}

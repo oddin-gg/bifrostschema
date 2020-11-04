@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "operatorTransactionId": {
+            "type": "string"
+        },
+        "errorMessage": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "string"
+                }
+            ]
+        },
+        "errorCode": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "additionalProperties": true,
+    "type": "object"
+}
