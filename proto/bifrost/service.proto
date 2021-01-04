@@ -5,7 +5,6 @@ package bifrost;
 import "bifrost/user_details.proto";
 import "bifrost/debit_user.proto";
 import "bifrost/credit_user.proto";
-import "google/protobuf/empty.proto";
 
 service bifrost {
   rpc UserDetails (UserDetailsRequest) returns (UserDetailsResponse);

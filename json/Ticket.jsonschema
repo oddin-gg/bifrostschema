@@ -1,0 +1,172 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "stake": {
+            "$ref": "bifrost.Amount",
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "wonAmount": {
+            "$ref": "bifrost.Amount",
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "date": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "status": {
+            "type": "string"
+        },
+        "bets": {
+            "items": {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "stake": {
+                        "$ref": "bifrost.Amount",
+                        "additionalProperties": true,
+                        "type": "object"
+                    },
+                    "selections": {
+                        "items": {
+                            "$schema": "http://json-schema.org/draft-04/schema#",
+                            "properties": {
+                                "outcome": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "marketId": {
+                                            "type": "string"
+                                        },
+                                        "marketName": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": true,
+                                    "type": "object"
+                                },
+                                "odds": {
+                                    "type": "number"
+                                },
+                                "event": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "sportId": {
+                                            "type": "string"
+                                        },
+                                        "dateStart": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        }
+                                    },
+                                    "additionalProperties": true,
+                                    "type": "object"
+                                },
+                                "voided": {
+                                    "oneOf": [
+                                        {
+                                            "type": "null"
+                                        },
+                                        {
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                },
+                                "won": {
+                                    "oneOf": [
+                                        {
+                                            "type": "null"
+                                        },
+                                        {
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                }
+                            },
+                            "additionalProperties": true,
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "won": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "boolean"
+                            }
+                        ]
+                    },
+                    "voided": {
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "type": "boolean"
+                            }
+                        ]
+                    },
+                    "wonAmount": {
+                        "$ref": "bifrost.Amount",
+                        "additionalProperties": true,
+                        "type": "object"
+                    },
+                    "totalOdds": {
+                        "type": "number"
+                    },
+                    "systems": {
+                        "items": {
+                            "type": "integer"
+                        },
+                        "type": "array"
+                    }
+                },
+                "additionalProperties": true,
+                "type": "object"
+            },
+            "type": "array"
+        }
+    },
+    "additionalProperties": true,
+    "type": "object",
+    "definitions": {
+        "bifrost.Amount": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "tax": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ]
+                },
+                "totalAmount": {
+                    "type": "number"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "id": "bifrost.Amount"
+        }
+    }
+}

@@ -3,17 +3,20 @@ syntax = "proto3";
 package bifrost;
 
 import "google/protobuf/wrappers.proto";
-import "google/protobuf/timestamp.proto";
+import "bifrost/common.proto";
 
 message CreditUserRequest {
   string token = 1;
-  string currency = 2;
-  float amount = 3;
-  string description = 4;
-  string transactionId = 5;
-  string debitOperatorTransactionId = 6;
-  string debitTransactionId = 7;
-  string betId = 8;
+  string userId = 2;
+  string currency = 3;
+  Amount amount = 4;
+  string description = 5;
+  string transactionId = 6;
+  string debitOperatorTransactionId = 7;
+  string debitTransactionId = 8;
+  string betId = 9;
+  uint32 transactionType = 10;
+  Ticket ticket = 11;
 }
 
 message CreditUserResponse {

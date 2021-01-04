@@ -4,6 +4,9 @@
         "userId": {
             "type": "string"
         },
+        "nickname": {
+            "type": "string"
+        },
         "currency": {
             "type": "string"
         },

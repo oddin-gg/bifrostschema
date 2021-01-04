@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "marketId": {
+            "type": "string"
+        },
+        "marketName": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": true,
+    "type": "object"
+}

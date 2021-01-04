@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "amount": {
+            "type": "number"
+        },
+        "tax": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "number"
+                }
+            ]
+        },
+        "totalAmount": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": true,
+    "type": "object"
+}

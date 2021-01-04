@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package bifrost;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+message Amount {
+  float amount = 1;
+  google.protobuf.FloatValue  tax = 2;
+  float totalAmount = 3;
+}
+
+message TicketOutcome {
+  string name = 1;
+  string id = 2;
+  string marketId = 3;
+  string marketName = 4;
+}
+
+message TicketEvent {
+  string name = 1;
+  string id = 2;
+  string sportId = 3;
+  google.protobuf.Timestamp dateStart = 4;
+}
+
+message TicketSelection {
+  TicketOutcome outcome = 1;
+  float odds = 2;
+  TicketEvent event = 3;
+  google.protobuf.BoolValue voided = 4;
+  google.protobuf.BoolValue won = 5;
+}
+
+message TicketBet {
+  string id = 1;
+  Amount stake = 2;
+  repeated TicketSelection selections = 3;
+  google.protobuf.BoolValue won = 4;
+  google.protobuf.BoolValue voided = 5;
+  Amount wonAmount = 6;
+  float totalOdds = 7;
+  repeated uint32 systems = 8;
+}
+
+message Ticket {
+  Amount stake = 1;
+  Amount wonAmount = 2;
+  google.protobuf.Timestamp date = 3;
+  string status = 4;
+  repeated TicketBet bets = 5;
+}
