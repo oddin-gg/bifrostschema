@@ -1,28 +1,37 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "properties": {
-        "outcome": {
+    "$ref": "#/definitions/TicketSelection",
+    "definitions": {
+        "TicketSelection": {
             "properties": {
-                "name": {
-                    "type": "string"
+                "outcome": {
+                    "$ref": "#/definitions/bifrost.TicketOutcome",
+                    "additionalProperties": true
+                },
+                "odds": {
+                    "type": "number"
+                },
+                "event": {
+                    "$ref": "#/definitions/bifrost.TicketEvent",
+                    "additionalProperties": true
+                },
+                "voided": {
+                    "additionalProperties": true,
+                    "type": "boolean"
+                },
+                "won": {
+                    "additionalProperties": true,
+                    "type": "boolean"
                 },
                 "id": {
-                    "type": "string"
-                },
-                "marketId": {
-                    "type": "string"
-                },
-                "marketName": {
                     "type": "string"
                 }
             },
             "additionalProperties": true,
-            "type": "object"
+            "type": "object",
+            "title": "Ticket Selection"
         },
-        "odds": {
-            "type": "number"
-        },
-        "event": {
+        "bifrost.TicketEvent": {
             "properties": {
                 "name": {
                     "type": "string"
@@ -36,32 +45,69 @@
                 "dateStart": {
                     "type": "string",
                     "format": "date-time"
+                },
+                "teams": {
+                    "items": {
+                        "$ref": "#/definitions/bifrost.TicketEventTeam"
+                    },
+                    "type": "array"
+                },
+                "tournamentId": {
+                    "type": "string"
+                },
+                "tournamentName": {
+                    "type": "string"
+                },
+                "sportName": {
+                    "type": "string"
+                },
+                "isLive": {
+                    "additionalProperties": true,
+                    "type": "boolean"
                 }
             },
             "additionalProperties": true,
-            "type": "object"
+            "type": "object",
+            "title": "Ticket Event"
         },
-        "voided": {
-            "oneOf": [
-                {
-                    "type": "null"
+        "bifrost.TicketEventTeam": {
+            "properties": {
+                "name": {
+                    "type": "string"
                 },
-                {
+                "isHome": {
+                    "additionalProperties": true,
                     "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
                 }
-            ]
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Ticket Event Team"
         },
-        "won": {
-            "oneOf": [
-                {
-                    "type": "null"
+        "bifrost.TicketOutcome": {
+            "properties": {
+                "name": {
+                    "type": "string"
                 },
-                {
-                    "type": "boolean"
+                "id": {
+                    "type": "string"
+                },
+                "marketId": {
+                    "type": "string"
+                },
+                "marketName": {
+                    "type": "string"
+                },
+                "outcomeId": {
+                    "type": "string"
                 }
-            ]
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Ticket Outcome"
         }
-    },
-    "additionalProperties": true,
-    "type": "object"
+    }
 }

@@ -11,11 +11,31 @@ message Amount {
   float totalAmount = 3;
 }
 
+message BonusAmount {
+  float virtual = 1;
+  float nonWinning = 2;
+  float winning = 3;
+  float total = 4;
+  float free = 5;
+  float tax = 6;
+}
+
+message Bonus {
+  string id = 1;
+}
+
 message TicketOutcome {
   string name = 1;
   string id = 2;
   string marketId = 3;
   string marketName = 4;
+  string outcomeId = 5;
+}
+
+message TicketEventTeam {
+  string name = 1;
+  google.protobuf.BoolValue isHome = 2;
+  string id = 3;
 }
 
 message TicketEvent {
@@ -23,6 +43,11 @@ message TicketEvent {
   string id = 2;
   string sportId = 3;
   google.protobuf.Timestamp dateStart = 4;
+  repeated TicketEventTeam teams = 5;
+  string tournamentId = 6;
+  string tournamentName = 7;
+  string sportName = 8;
+  google.protobuf.BoolValue isLive = 9;
 }
 
 message TicketSelection {
@@ -31,6 +56,7 @@ message TicketSelection {
   TicketEvent event = 3;
   google.protobuf.BoolValue voided = 4;
   google.protobuf.BoolValue won = 5;
+  string id = 6;
 }
 
 message TicketBet {
@@ -42,6 +68,10 @@ message TicketBet {
   Amount wonAmount = 6;
   float totalOdds = 7;
   repeated uint32 systems = 8;
+  BonusAmount bonusStake = 9;
+  BonusAmount bonusWonAmount = 10;
+  repeated Bonus bonuses = 11;
+
 }
 
 message Ticket {
@@ -50,4 +80,7 @@ message Ticket {
   google.protobuf.Timestamp date = 3;
   string status = 4;
   repeated TicketBet bets = 5;
+  BonusAmount bonusStake = 6;
+  BonusAmount bonusWonAmount = 7;
+  Amount possibleWinAmount = 8;
 }

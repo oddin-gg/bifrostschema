@@ -1,20 +1,62 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "properties": {
-        "name": {
-            "type": "string"
+    "$ref": "#/definitions/TicketEvent",
+    "definitions": {
+        "TicketEvent": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "sportId": {
+                    "type": "string"
+                },
+                "dateStart": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "teams": {
+                    "items": {
+                        "$ref": "#/definitions/bifrost.TicketEventTeam"
+                    },
+                    "type": "array"
+                },
+                "tournamentId": {
+                    "type": "string"
+                },
+                "tournamentName": {
+                    "type": "string"
+                },
+                "sportName": {
+                    "type": "string"
+                },
+                "isLive": {
+                    "additionalProperties": true,
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Ticket Event"
         },
-        "id": {
-            "type": "string"
-        },
-        "sportId": {
-            "type": "string"
-        },
-        "dateStart": {
-            "type": "string",
-            "format": "date-time"
+        "bifrost.TicketEventTeam": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "isHome": {
+                    "additionalProperties": true,
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Ticket Event Team"
         }
-    },
-    "additionalProperties": true,
-    "type": "object"
+    }
 }

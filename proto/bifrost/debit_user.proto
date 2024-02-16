@@ -17,6 +17,7 @@ message DebitUserRequest {
   google.protobuf.StringValue creditOperatorTransactionId = 9;
   google.protobuf.StringValue creditTransactionId = 10;
   Ticket ticket = 11;
+  BonusAmount bonusAmount = 12;
 }
 
 message DebitUserResponse {

@@ -1,16 +1,16 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "$ref": "#/definitions/UserDetailsRequest",
+    "$ref": "#/definitions/Bonus",
     "definitions": {
-        "UserDetailsRequest": {
+        "Bonus": {
             "properties": {
-                "token": {
+                "id": {
                     "type": "string"
                 }
             },
             "additionalProperties": true,
             "type": "object",
-            "title": "User Details Request"
+            "title": "Bonus"
         }
     }
 }

@@ -1,24 +1,23 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "$ref": "#/definitions/DebitUserResponse",
+    "$ref": "#/definitions/TicketEventTeam",
     "definitions": {
-        "DebitUserResponse": {
+        "TicketEventTeam": {
             "properties": {
-                "operatorTransactionId": {
+                "name": {
                     "type": "string"
                 },
-                "errorMessage": {
+                "isHome": {
                     "additionalProperties": true,
-                    "type": "string"
+                    "type": "boolean"
                 },
-                "errorCode": {
-                    "additionalProperties": true,
-                    "type": "integer"
+                "id": {
+                    "type": "string"
                 }
             },
             "additionalProperties": true,
             "type": "object",
-            "title": "Debit User Response"
+            "title": "Ticket Event Team"
         }
     }
 }

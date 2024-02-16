@@ -17,6 +17,8 @@ message CreditUserRequest {
   string betId = 9;
   uint32 transactionType = 10;
   Ticket ticket = 11;
+
+  BonusAmount bonusAmount = 12;
 }
 
 message CreditUserResponse {

@@ -1,19 +1,28 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "properties": {
-        "name": {
-            "type": "string"
-        },
-        "id": {
-            "type": "string"
-        },
-        "marketId": {
-            "type": "string"
-        },
-        "marketName": {
-            "type": "string"
+    "$ref": "#/definitions/TicketOutcome",
+    "definitions": {
+        "TicketOutcome": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "marketId": {
+                    "type": "string"
+                },
+                "marketName": {
+                    "type": "string"
+                },
+                "outcomeId": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Ticket Outcome"
         }
-    },
-    "additionalProperties": true,
-    "type": "object"
+    }
 }

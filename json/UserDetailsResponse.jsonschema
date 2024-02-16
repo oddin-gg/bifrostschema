@@ -1,39 +1,33 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "properties": {
-        "userId": {
-            "type": "string"
-        },
-        "nickname": {
-            "type": "string"
-        },
-        "currency": {
-            "type": "string"
-        },
-        "language": {
-            "type": "string"
-        },
-        "errorMessage": {
-            "oneOf": [
-                {
-                    "type": "null"
-                },
-                {
+    "$ref": "#/definitions/UserDetailsResponse",
+    "definitions": {
+        "UserDetailsResponse": {
+            "properties": {
+                "userId": {
                     "type": "string"
-                }
-            ]
-        },
-        "errorCode": {
-            "oneOf": [
-                {
-                    "type": "null"
                 },
-                {
+                "nickname": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "errorMessage": {
+                    "additionalProperties": true,
+                    "type": "string"
+                },
+                "errorCode": {
+                    "additionalProperties": true,
                     "type": "integer"
                 }
-            ]
+            },
+            "additionalProperties": true,
+            "type": "object",
+            "title": "User Details Response"
         }
-    },
-    "additionalProperties": true,
-    "type": "object"
+    }
 }
