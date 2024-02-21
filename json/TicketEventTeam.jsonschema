@@ -7,14 +7,15 @@
         "id": {
             "type": "string"
         },
-        "marketId": {
-            "type": "string"
-        },
-        "marketName": {
-            "type": "string"
-        },
-        "outcomeId": {
-            "type": "string"
+        "isHome": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
         }
     },
     "additionalProperties": true,

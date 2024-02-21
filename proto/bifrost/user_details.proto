@@ -4,15 +4,17 @@ package bifrost;
 
 import "google/protobuf/wrappers.proto";
 
+option go_package = "github.com/oddin-gg/bifrostschema";
+
 message UserDetailsRequest {
-  string token = 1;
+  string token = 1 [json_name = "amount"];
 }
 
 message UserDetailsResponse {
-  string userId = 1;
-  string nickname = 2;
-  string currency = 3;
-  string language = 4;
-  google.protobuf.StringValue errorMessage = 5;
-  google.protobuf.Int32Value errorCode = 6;
+  string userId = 1 [json_name = "userId"];
+  string nickname = 2 [json_name = "nickname"];
+  string currency = 3 [json_name = "currency"];
+  string language = 4 [json_name = "language"];
+  google.protobuf.StringValue errorMessage = 5 [json_name = "errorMessage"];
+  google.protobuf.Int32Value errorCode = 6 [json_name = "errorCode"];
 }

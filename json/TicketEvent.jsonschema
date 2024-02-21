@@ -13,8 +13,60 @@
         "dateStart": {
             "type": "string",
             "format": "date-time"
+        },
+        "teams": {
+            "items": {
+                "$ref": "bifrost.TicketEventTeam",
+                "additionalProperties": true,
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "tournamentId": {
+            "type": "string"
+        },
+        "tournamentName": {
+            "type": "string"
+        },
+        "sportName": {
+            "type": "string"
+        },
+        "isLive": {
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "type": "boolean"
+                }
+            ]
         }
     },
     "additionalProperties": true,
-    "type": "object"
+    "type": "object",
+    "definitions": {
+        "bifrost.TicketEventTeam": {
+            "id": "bifrost.TicketEventTeam",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "isHome": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
+        }
+    }
 }
