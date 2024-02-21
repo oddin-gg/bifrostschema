@@ -4,50 +4,86 @@ package bifrost;
 
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/oddin-gg/bifrostschema";
 
 message Amount {
-  float amount = 1;
-  google.protobuf.FloatValue  tax = 2;
-  float totalAmount = 3;
+  float amount = 1 [json_name = "amount"];
+  optional float tax = 2 [json_name = "tax"];
+  float totalAmount = 3 [json_name = "totalAmount"];
+}
+
+message BonusAmount {
+  float virtual = 1 [json_name = "virtual"];
+  float nonWinning = 2 [json_name = "nonWinning"];
+  float winning = 3 [json_name = "winning"];
+  float total = 4 [json_name = "total"];
+  float free = 5 [json_name = "free"];
+  float tax = 6 [json_name = "tax"];
+}
+
+message Bonus {
+  string id = 1 [json_name = "id"];
 }
 
 message TicketOutcome {
-  string name = 1;
-  string id = 2;
-  string marketId = 3;
-  string marketName = 4;
+  string name = 1 [json_name = "name"];
+  int64 id = 2 [json_name = "id", deprecated = true];
+  string marketId = 3 [json_name = "marketId"];
+  string marketName = 4 [json_name = "marketName"];
+  string outcomeId = 5 [json_name = "outcomeId"];
+}
+
+message TicketEventTeam {
+  string name = 1 [json_name = "name"];
+  optional bool isHome = 2 [json_name = "isHome"];
+  string id = 3 [json_name = "id"];
 }
 
 message TicketEvent {
-  string name = 1;
-  string id = 2;
-  string sportId = 3;
-  google.protobuf.Timestamp dateStart = 4;
+  string name = 1 [json_name = "name"];
+  string id = 2 [json_name = "id"];
+  string sportId = 3 [json_name = "sportId"];
+  google.protobuf.Timestamp dateStart = 4 [json_name = "dateStart"];
+  repeated TicketEventTeam teams = 5 [json_name = "teams"];
+  string tournamentId = 6 [json_name = "tournamentId"];
+  string tournamentName = 7 [json_name = "tournamentName"];
+  string sportName = 8 [json_name = "sportName"];
+  google.protobuf.BoolValue isLive = 9 [json_name = "isLive"];
 }
 
 message TicketSelection {
-  TicketOutcome outcome = 1;
-  float odds = 2;
-  TicketEvent event = 3;
-  google.protobuf.BoolValue voided = 4;
-  google.protobuf.BoolValue won = 5;
+  TicketOutcome outcome = 1 [json_name = "outcome"];
+  float odds = 2 [json_name = "odds"];
+  TicketEvent event = 3 [json_name = "event"];
+  google.protobuf.BoolValue voided = 4 [json_name = "voided"];
+  google.protobuf.BoolValue won = 5 [json_name = "won"];
+  string id = 6 [json_name = "id"];
 }
 
 message TicketBet {
-  string id = 1;
-  Amount stake = 2;
-  repeated TicketSelection selections = 3;
-  google.protobuf.BoolValue won = 4;
-  google.protobuf.BoolValue voided = 5;
-  Amount wonAmount = 6;
-  float totalOdds = 7;
-  repeated uint32 systems = 8;
+  string id = 1 [json_name = "id"];
+  Amount stake = 2 [json_name = "stake"];
+  repeated TicketSelection selections = 3 [json_name = "selections"];
+  optional bool won = 4 [json_name = "won"];
+  optional bool voided = 5 [json_name = "voided"];
+  Amount wonAmount = 6 [json_name = "wonAmount"];
+  float totalOdds = 7 [json_name = "totalOdds"];
+  repeated uint32 systems = 8 [json_name = "systems"];
+  optional BonusAmount bonusStake = 9 [json_name = "bonusStake"];
+  BonusAmount bonusWonAmount = 10 [json_name = "bonusWonAmount"];
+  repeated Bonus bonuses = 11 [json_name = "bonuses"];
+
 }
 
 message Ticket {
-  Amount stake = 1;
-  Amount wonAmount = 2;
-  google.protobuf.Timestamp date = 3;
-  string status = 4;
-  repeated TicketBet bets = 5;
+  Amount stake = 1 [json_name = "stake"];
+  Amount wonAmount = 2 [json_name = "wonAmount"];
+  google.protobuf.Timestamp date = 3 [json_name = "date"];
+  string status = 4 [json_name = "status"];
+  repeated TicketBet bets = 5 [json_name = "bets"];
+  BonusAmount bonusStake = 6 [json_name = "bonusStake"];
+  BonusAmount bonusWonAmount = 7 [json_name = "bonusWonAmount"];
+  Amount possibleWinAmount = 8 [json_name = "possibleWinAmount"];
 }

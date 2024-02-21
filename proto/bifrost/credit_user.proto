@@ -5,23 +5,27 @@ package bifrost;
 import "google/protobuf/wrappers.proto";
 import "bifrost/common.proto";
 
+option go_package = "github.com/oddin-gg/bifrostschema";
+
 message CreditUserRequest {
-  string token = 1;
-  string userId = 2;
-  string currency = 3;
-  Amount amount = 4;
-  string description = 5;
-  string transactionId = 6;
-  string debitOperatorTransactionId = 7;
-  string debitTransactionId = 8;
-  string betId = 9;
-  uint32 transactionType = 10;
-  Ticket ticket = 11;
+  string token = 1 [json_name = "token"];
+  string userId = 2 [json_name = "userId"];
+  string currency = 3 [json_name = "currency"];
+  Amount amount = 4 [json_name = "amount"];
+  string description = 5 [json_name = "description"];
+  string transactionId = 6 [json_name = "transactionId"];
+  string debitOperatorTransactionId = 7 [json_name = "debitOperatorTransactionId"];
+  string debitTransactionId = 8 [json_name = "debitTransactionId"];
+  string betId = 9 [json_name = "betId"];
+  uint32 transactionType = 10 [json_name = "transactionType"];
+  Ticket ticket = 11 [json_name = "ticket"];
+  BonusAmount bonusAmount = 12 [json_name = "bonusAmount"];
+  string ticketId = 13 [json_name = "ticketId"];
 }
 
 message CreditUserResponse {
-  string operatorTransactionId = 1;
-  google.protobuf.StringValue errorMessage = 2;
-  google.protobuf.Int32Value errorCode = 3;
+  string operatorTransactionId = 1 [json_name = "operatorTransactionId"];
+  google.protobuf.StringValue errorMessage = 2 [json_name = "errorMessage"];
+  google.protobuf.Int32Value errorCode = 3 [json_name = "errorCode"];
 }
 

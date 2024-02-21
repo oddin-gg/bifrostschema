@@ -6,6 +6,8 @@ import "bifrost/user_details.proto";
 import "bifrost/debit_user.proto";
 import "bifrost/credit_user.proto";
 
+option go_package = "github.com/oddin-gg/bifrostschema";
+
 service bifrost {
   rpc UserDetails (UserDetailsRequest) returns (UserDetailsResponse);
   rpc DebitUser(DebitUserRequest) returns (DebitUserResponse);

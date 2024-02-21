@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "properties": {
+        "virtual": {
+            "type": "number"
+        },
+        "nonWinning": {
+            "type": "number"
+        },
+        "winning": {
+            "type": "number"
+        },
+        "total": {
+            "type": "number"
+        },
+        "free": {
+            "type": "number"
+        },
+        "tax": {
+            "type": "number"
+        }
+    },
+    "additionalProperties": true,
+    "type": "object"
+}

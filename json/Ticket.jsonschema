@@ -20,132 +20,258 @@
         },
         "bets": {
             "items": {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "stake": {
-                        "$ref": "bifrost.Amount",
-                        "additionalProperties": true,
-                        "type": "object"
-                    },
-                    "selections": {
-                        "items": {
-                            "$schema": "http://json-schema.org/draft-04/schema#",
-                            "properties": {
-                                "outcome": {
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "id": {
-                                            "type": "string"
-                                        },
-                                        "marketId": {
-                                            "type": "string"
-                                        },
-                                        "marketName": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "additionalProperties": true,
-                                    "type": "object"
-                                },
-                                "odds": {
-                                    "type": "number"
-                                },
-                                "event": {
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "id": {
-                                            "type": "string"
-                                        },
-                                        "sportId": {
-                                            "type": "string"
-                                        },
-                                        "dateStart": {
-                                            "type": "string",
-                                            "format": "date-time"
-                                        }
-                                    },
-                                    "additionalProperties": true,
-                                    "type": "object"
-                                },
-                                "voided": {
-                                    "oneOf": [
-                                        {
-                                            "type": "null"
-                                        },
-                                        {
-                                            "type": "boolean"
-                                        }
-                                    ]
-                                },
-                                "won": {
-                                    "oneOf": [
-                                        {
-                                            "type": "null"
-                                        },
-                                        {
-                                            "type": "boolean"
-                                        }
-                                    ]
-                                }
-                            },
-                            "additionalProperties": true,
-                            "type": "object"
-                        },
-                        "type": "array"
-                    },
-                    "won": {
-                        "oneOf": [
-                            {
-                                "type": "null"
-                            },
-                            {
-                                "type": "boolean"
-                            }
-                        ]
-                    },
-                    "voided": {
-                        "oneOf": [
-                            {
-                                "type": "null"
-                            },
-                            {
-                                "type": "boolean"
-                            }
-                        ]
-                    },
-                    "wonAmount": {
-                        "$ref": "bifrost.Amount",
-                        "additionalProperties": true,
-                        "type": "object"
-                    },
-                    "totalOdds": {
-                        "type": "number"
-                    },
-                    "systems": {
-                        "items": {
-                            "type": "integer"
-                        },
-                        "type": "array"
-                    }
-                },
+                "$ref": "bifrost.TicketBet",
                 "additionalProperties": true,
                 "type": "object"
             },
             "type": "array"
+        },
+        "bonusStake": {
+            "$ref": "bifrost.BonusAmount",
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "bonusWonAmount": {
+            "$ref": "bifrost.BonusAmount",
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "possibleWinAmount": {
+            "$ref": "bifrost.Amount",
+            "additionalProperties": true,
+            "type": "object"
         }
     },
     "additionalProperties": true,
     "type": "object",
     "definitions": {
+        "bifrost.TicketEventTeam": {
+            "id": "bifrost.TicketEventTeam",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "isHome": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "bifrost.TicketEvent": {
+            "id": "bifrost.TicketEvent",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "sportId": {
+                    "type": "string"
+                },
+                "dateStart": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "teams": {
+                    "items": {
+                        "$ref": "bifrost.TicketEventTeam",
+                        "additionalProperties": true,
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "tournamentId": {
+                    "type": "string"
+                },
+                "tournamentName": {
+                    "type": "string"
+                },
+                "sportName": {
+                    "type": "string"
+                },
+                "isLive": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "bifrost.TicketSelection": {
+            "id": "bifrost.TicketSelection",
+            "properties": {
+                "outcome": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "marketId": {
+                            "type": "string"
+                        },
+                        "marketName": {
+                            "type": "string"
+                        },
+                        "outcomeId": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                "odds": {
+                    "type": "number"
+                },
+                "event": {
+                    "$ref": "bifrost.TicketEvent",
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                "voided": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                "won": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "bifrost.TicketBet": {
+            "id": "bifrost.TicketBet",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "stake": {
+                    "$ref": "bifrost.Amount",
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                "selections": {
+                    "items": {
+                        "$ref": "bifrost.TicketSelection",
+                        "additionalProperties": true,
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "won": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                "voided": {
+                    "oneOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "boolean"
+                        }
+                    ]
+                },
+                "wonAmount": {
+                    "$ref": "bifrost.Amount",
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                "totalOdds": {
+                    "type": "number"
+                },
+                "systems": {
+                    "items": {
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "bonusStake": {
+                    "$ref": "bifrost.BonusAmount",
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                "bonusWonAmount": {
+                    "$ref": "bifrost.BonusAmount",
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                "bonuses": {
+                    "items": {
+                        "$ref": "bifrost.Bonus",
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
+        },
+        "bifrost.BonusAmount": {
+            "id": "bifrost.BonusAmount",
+            "properties": {
+                "virtual": {
+                    "type": "number"
+                },
+                "nonWinning": {
+                    "type": "number"
+                },
+                "winning": {
+                    "type": "number"
+                },
+                "total": {
+                    "type": "number"
+                },
+                "free": {
+                    "type": "number"
+                },
+                "tax": {
+                    "type": "number"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
+        },
         "bifrost.Amount": {
-            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "bifrost.Amount",
             "properties": {
                 "amount": {
                     "type": "number"
@@ -165,8 +291,17 @@
                 }
             },
             "additionalProperties": true,
-            "type": "object",
-            "id": "bifrost.Amount"
+            "type": "object"
+        },
+        "bifrost.Bonus": {
+            "id": "bifrost.Bonus",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": true,
+            "type": "object"
         }
     }
 }
